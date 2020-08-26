@@ -96,7 +96,7 @@ body{
   text-transform: uppercase;
   margin: 0;
   margin-top: 8px;
-} 
+}
 .day p sup {
   font-size: 10px;
 }
@@ -129,20 +129,35 @@ body{
   background-color: #fff;
 }
 .main-container {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 30px 0 10px 40px;
+  overflow: auto;
+}
+.main-container::-webkit-scrollbar {
+  display: none;
+}
+.main-container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 .themes,
 .videos-list {
   display: flex;
   align-items: center;
   margin: 0;
+  margin-left: 50px;
   padding: 0;
   list-style-type: none;
-  padding-bottom: 30px;
   overflow: auto;
+}
+.videos-list::-webkit-scrollbar {
+  display: none;
+}
+.videos-list {
+  padding: 30px 0;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 .themes-list:not(:last-child) {
   margin-right: 40px;
@@ -163,13 +178,32 @@ body{
 .videos-item-bg {
   position: relative;
   z-index: 1;
-  width: 250px;
-  height: 150px;
+  width: 200px;
+  height: 100px;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   box-shadow: 0 3px 10px 1px rgba(0, 0, 0, 0.5);
-  transition: background-image 0.6s ease;
+}
+.videos-item-bg::before {
+  background-image: url("../img/play-circle-sharp.svg");
+  width: 40px;
+  height: 40px;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+.videos-item-bg:hover::before {
+
+  opacity: 1;
 }
 .videos-item:nth-child(1) .videos-item-bg {
   background-image: linear-gradient(to right,
@@ -201,24 +235,10 @@ body{
     rgba(0, 0, 0, 0.5)),
   url("../img/video-american-dad.jpg");
 }
-.videos-item-bg:hover::before {
-  content: "";
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  background-image: url("../img/play-circle-sharp.svg");
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
 .videos-item-active {
   position: relative;
-  z-index: 2;
-  transform: scale(1.1);
+  z-index: 50;
+  transform: scale(1.2) translateY(5px);
 }
 .videos-item-time {
   margin-top: 25px;
@@ -227,6 +247,7 @@ body{
   font-size: 14px;
 }
 .videos-item-name {
+  font-size: 14px;
   color: #222;
   margin: 0;
 }
