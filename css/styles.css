@@ -148,6 +148,7 @@ body{
   margin: 0;
   margin-left: 50px;
   padding: 0;
+  padding-left: 30px;
   list-style-type: none;
   overflow: auto;
 }
@@ -187,7 +188,11 @@ body{
   background-repeat: no-repeat;
   box-shadow: 0 20px 20px -15px rgba(0, 0, 0, 0.5);
   cursor: pointer;
-  transition: transform 0.5s ease;
+  transition: transform 0.4s ease;
+}
+.videos-item-bg:hover {
+  z-index: 55;
+  transform: scale(1.2);
 }
 .videos-item-bg::before {
   background-image: url("../img/play-circle-sharp.svg");
@@ -245,10 +250,6 @@ body{
     rgba(0, 0, 0, 0.5),
     rgba(0, 0, 0, 0.5)),
   url("../img/video-american-dad.jpg");
-}
-.videos-item-bg:hover {
-  z-index: 55;
-  transform: scale(1.2);
 }
 .videos-item-active .videos-item-bg{
   z-index: 50;
