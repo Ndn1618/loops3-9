@@ -155,9 +155,11 @@ body{
   display: none;
 }
 .videos-list {
-  padding: 30px 0;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+}
+.videos-item {
+  padding: 30px 0;
 }
 .themes-list:not(:last-child) {
   margin-right: 40px;
@@ -183,7 +185,8 @@ body{
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  box-shadow: 0 3px 10px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 20px -15px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 .videos-item-bg::before {
   background-image: url("../img/play-circle-sharp.svg");
@@ -202,8 +205,15 @@ body{
   opacity: 0;
 }
 .videos-item-bg:hover::before {
-
   opacity: 1;
+}
+.videos-item-player {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 .videos-item:nth-child(1) .videos-item-bg {
   background-image: linear-gradient(to right,
@@ -235,13 +245,12 @@ body{
     rgba(0, 0, 0, 0.5)),
   url("../img/video-american-dad.jpg");
 }
-.videos-item-active {
+.videos-item-active .videos-item-bg{
   position: relative;
   z-index: 50;
-  transform: scale(1.2) translateY(5px);
+  transform: scale(1.2);
 }
 .videos-item-time {
-  margin-top: 25px;
   margin-bottom: 1px;
   color: #aaa;
   font-size: 14px;
